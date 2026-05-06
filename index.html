@@ -25,6 +25,46 @@
   }
   .hero h1 .accent { color: var(--lp-sky-500); font-weight: 600; }
   .hero h1 br { display: inline; }
+
+  /* Subtle word-by-word fade-rise on the hero headline */
+  .hero h1 .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.32em);
+    filter: blur(6px);
+    animation: heroWordIn 900ms cubic-bezier(.2, .7, .2, 1) forwards;
+    animation-delay: var(--d, 0ms);
+    will-change: opacity, transform, filter;
+  }
+  .hero h1 .accent.word {
+    /* accents land with a softer, slightly slower rise */
+    animation-duration: 1100ms;
+  }
+  @keyframes heroWordIn {
+    0%   { opacity: 0; transform: translateY(0.32em); filter: blur(6px); }
+    60%  { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  .hero p.lede {
+    opacity: 0;
+    animation: heroFadeIn 800ms ease-out 850ms forwards;
+  }
+  .hero .btn-pill.lg {
+    opacity: 0;
+    animation: heroFadeIn 800ms ease-out 1100ms forwards;
+  }
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .word, .hero p.lede, .hero .btn-pill.lg {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
   .hero p {
     font-size: 18px;
     line-height: 1.55;
@@ -207,10 +247,15 @@
 <section id="top" class="stipple">
   <div class="page hero">
     <h1>
-      We <span class="accent">provide</span> insurance<br/>
-      for when <span class="accent">life</span> happens
+      <span class="word" style="--d: 0ms">We</span>
+      <span class="word accent" style="--d: 120ms">provide</span>
+      <span class="word" style="--d: 240ms">insurance</span><br/>
+      <span class="word" style="--d: 360ms">for</span>
+      <span class="word" style="--d: 440ms">when</span>
+      <span class="word accent" style="--d: 540ms">life</span>
+      <span class="word" style="--d: 680ms">happens</span>
     </h1>
-    <p>
+    <p class="lede">
       We&rsquo;re embedding insurance in the products &amp; services people buy everyday.
       Our insurance technology is for builders &amp; buyers.
     </p>
