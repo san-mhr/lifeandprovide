@@ -36,23 +36,14 @@
     animation-delay: var(--d, 0ms);
     will-change: opacity, transform, filter;
   }
-  .hero h1 .accent.word {
-    /* accents land with a softer, slightly slower rise */
-    animation-duration: 1100ms;
-  }
+  .hero h1 .accent.word { animation-duration: 1100ms; }
   @keyframes heroWordIn {
     0%   { opacity: 0; transform: translateY(0.32em); filter: blur(6px); }
     60%  { opacity: 1; filter: blur(0); }
     100% { opacity: 1; transform: translateY(0); filter: blur(0); }
   }
-  .hero p.lede {
-    opacity: 0;
-    animation: heroFadeIn 800ms ease-out 850ms forwards;
-  }
-  .hero .btn-pill.lg {
-    opacity: 0;
-    animation: heroFadeIn 800ms ease-out 1100ms forwards;
-  }
+  .hero p.lede { opacity: 0; animation: heroFadeIn 800ms ease-out 850ms forwards; }
+  .hero .btn-pill.lg { opacity: 0; animation: heroFadeIn 800ms ease-out 1100ms forwards; }
   @keyframes heroFadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -350,7 +341,7 @@
       </nav>
     </div>
     <div class="legal">
-      <p>&copy; 2025 Life &amp; Provide. All rights reserved.</p>
+      <p>&copy; 2026 Life &amp; Provide. All rights reserved.</p>
       <p>Life &amp; Provide Limited t/a Life &amp; Provide is regulated by the Central Bank of Ireland.</p>
     </div>
   </div>
