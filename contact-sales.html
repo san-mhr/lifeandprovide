@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact sales — Life &amp; Provide</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  .contact-hero {
+    padding: 72px 0 24px;
+    text-align: center;
+  }
+  .contact-hero .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lp-sky-500);
+    font-weight: var(--lp-fw-semibold);
+    margin-bottom: 18px;
+  }
+  .contact-hero h1 {
+    font-family: var(--lp-font-display);
+    font-weight: 700;
+    font-size: clamp(44px, 6.5vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--lp-navy-900);
+    margin: 0 auto 18px;
+    max-width: 14ch;
+  }
+  .contact-hero h1 .accent { color: var(--lp-sky-500); font-weight: 600; }
+  .contact-hero p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--lp-slate-500);
+    max-width: 46ch;
+    margin: 0 auto 12px;
+  }
+  .form-card {
+    max-width: 880px;
+    margin: 32px auto 96px;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid rgba(52, 73, 94, 0.08);
+    box-shadow:
+      0 1px 2px rgba(52, 73, 94, 0.04),
+      0 24px 60px -20px rgba(52, 73, 94, 0.18);
+    padding: 12px;
+    overflow: hidden;
+  }
+  .form-card [data-tf-live] {
+    min-height: 620px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  @media (max-width: 640px) {
+    .contact-hero { padding: 40px 0 12px; }
+    .contact-hero h1 { font-size: clamp(36px, 11vw, 56px); }
+    .contact-hero p { font-size: 16px; }
+    .form-card { margin: 16px auto 48px; padding: 6px; border-radius: 16px; }
+    .form-card [data-tf-live] { min-height: 560px; border-radius: 12px; }
+  }
+  .reassure {
+    max-width: 880px;
+    margin: 0 auto 96px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    color: var(--lp-slate-500);
+    font-size: 14px;
+  }
+  .reassure .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: rgba(137, 198, 248, 0.08);
+    border: 1px solid rgba(137, 198, 248, 0.18);
+    border-radius: 12px;
+  }
+  .reassure svg { width: 16px; height: 16px; color: var(--lp-sky-500); flex-shrink: 0; }
+  @media (max-width: 720px) {
+    .reassure { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <nav class="site-nav" aria-label="primary">
+    <a href="index.html" aria-label="Life and Provide home">
+      <img class="logo" src="assets/logo-wordmark.svg" alt="Life &amp; Provide" />
+    </a>
+    <a class="btn-pill" href="index.html" style="background:white;color:var(--lp-navy-800);box-shadow:0 1px 2px rgba(0,0,0,.04);border:1px solid rgba(52,73,94,.12);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="11 6 5 12 11 18"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Back to home
+    </a>
+  </nav>
+</header>
+
+<section class="stipple">
+  <div class="page contact-hero">
+    <div class="eyebrow">Contact sales</div>
+    <h1>Get <span class="accent">started</span></h1>
+    <p>We just need a few quick details.</p>
+  </div>
+</section>
+
+<div class="page">
+  <div class="form-card">
+    <div data-tf-live="01KQZDK0KGR49VAQ2TFH9BW0PV"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="page">
+    <div class="row">
+      <a href="index.html" aria-label="Life and Provide home">
+        <img class="logo" src="assets/logo-wordmark.svg" alt="Life &amp; Provide" />
+      </a>
+      <nav class="links" aria-label="footer">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms Of Use</a>
+        <a href="contact-sales.html">Contact sales</a>
+      </nav>
+    </div>
+    <div class="legal">
+      <p>&copy; 2025 Life &amp; Provide. All rights reserved.</p>
+      <p>Life &amp; Provide Limited t/a Life &amp; Provide is regulated by the Central Bank of Ireland.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="//embed.typeform.com/next/embed.js"></script>
+</body>
+</html>

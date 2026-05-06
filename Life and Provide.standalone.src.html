@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Life &amp; Provide — Insurance Made Easy</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #FAFAF7; /* faint cream like marketing site */
+    color: var(--lp-fg-on-light);
+    font-family: var(--lp-font-ui);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Stipple pattern — the brand's faint dotted background. Subtle. */
+  .stipple {
+    background-image: radial-gradient(rgba(52, 73, 94, 0.18) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    background-position: 0 0;
+  }
+
+  a { color: var(--lp-sky-500); text-decoration: none; }
+  a:hover { color: rgb(110, 175, 230); }
+
+  /* ─── Layout shell ────────────────────────────────────────── */
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  @media (max-width: 720px) {
+    .page { padding: 0 24px; }
+  }
+
+  /* ─── Nav ─────────────────────────────────────────────────── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 8px;
+  }
+  .nav .logo {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+  .nav .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--lp-sky-500);
+    color: white;
+    border: none;
+    border-radius: var(--lp-radius-pill);
+    padding: 12px 18px;
+    font-family: var(--lp-font-ui);
+    font-weight: var(--lp-fw-medium);
+    font-size: var(--lp-fs-base);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(137, 198, 248, 0.35);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+  .nav .cta:hover { background: rgb(118, 184, 240); }
+  .nav .cta:active { transform: translateY(1px); }
+  .nav .cta svg { width: 14px; height: 14px; }
+
+  /* ─── Hero ────────────────────────────────────────────────── */
+  .hero {
+    padding: 80px 0 72px;
+    text-align: center;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: var(--lp-font-display);
+    font-weight: 600;
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    color: var(--lp-navy-900);
+    margin: 0 auto 28px;
+    max-width: 14ch;
+  }
+  .hero h1 .accent {
+    color: var(--lp-sky-500);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .hero p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--lp-slate-500);
+    max-width: 58ch;
+    margin: 0 auto 36px;
+  }
+  .hero .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lp-sky-500);
+    color: white;
+    border: none;
+    border-radius: var(--lp-radius-pill);
+    padding: 16px 28px;
+    font-family: var(--lp-font-ui);
+    font-weight: var(--lp-fw-medium);
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(137, 198, 248, 0.45);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+  .hero .cta:hover { background: rgb(118, 184, 240); }
+  .hero .cta svg { width: 16px; height: 16px; }
+
+  /* ─── Anchor link to sections ─────────────────────────────── */
+  .hero-anchors {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 56px;
+    color: var(--lp-slate-500);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+  .hero-anchors a {
+    color: var(--lp-slate-500);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 160ms;
+  }
+  .hero-anchors a:hover { color: var(--lp-navy-800); }
+  .hero-anchors svg { width: 12px; height: 12px; }
+
+  /* ─── Section block ───────────────────────────────────────── */
+  .section {
+    padding: 96px 0;
+    border-top: 1px solid rgba(52, 73, 94, 0.08);
+  }
+  .section .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .section.reverse .grid {
+    grid-template-columns: 1.05fr 1fr;
+  }
+  .section.reverse .grid .copy { order: 2; }
+  .section.reverse .grid .media { order: 1; }
+  @media (max-width: 880px) {
+    .section { padding: 64px 0; }
+    .section .grid,
+    .section.reverse .grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .section.reverse .grid .copy { order: 1; }
+    .section.reverse .grid .media { order: 2; }
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid rgba(52, 73, 94, 0.12);
+    border-radius: var(--lp-radius-pill);
+    padding: 8px 14px 8px 12px;
+    font-size: 14px;
+    font-weight: var(--lp-fw-medium);
+    color: var(--lp-navy-800);
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  .chip .spark {
+    color: var(--lp-sky-500);
+    width: 14px;
+    height: 14px;
+  }
+
+  .section h2 {
+    font-family: var(--lp-font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    color: var(--lp-navy-900);
+    margin: 0 0 28px;
+  }
+  .section h2 .accent {
+    color: var(--lp-sky-500);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .section p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--lp-slate-500);
+    max-width: 46ch;
+    margin: 0 0 18px;
+  }
+  .section p:last-of-type { margin-bottom: 0; }
+
+  /* ─── Video frames ────────────────────────────────────────── */
+  .video-card {
+    background: white;
+    border-radius: 24px;
+    padding: 14px;
+    box-shadow:
+      0 1px 2px rgba(52, 73, 94, 0.04),
+      0 24px 60px -20px rgba(52, 73, 94, 0.18);
+    border: 1px solid rgba(52, 73, 94, 0.06);
+  }
+  .video-frame-16x9 {
+    position: relative;
+    padding-top: 56.25%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--lp-navy-800);
+  }
+  .video-frame-1x1 {
+    position: relative;
+    padding-top: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--lp-navy-800);
+  }
+  .video-frame-16x9 iframe,
+  .video-frame-1x1 iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-card .caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 8px 4px;
+    font-size: 13px;
+    color: var(--lp-slate-500);
+  }
+  .video-card .caption .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--lp-sky-500);
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* On the buyers section, the 1:1 video sits inside a phone-ish frame width-cap */
+  .buyer-media-wrap {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  /* ─── Footer ──────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid rgba(52, 73, 94, 0.08);
+    background: white;
+    padding: 56px 0 40px;
+    margin-top: 24px;
+  }
+  footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  footer .links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+  }
+  footer .links a {
+    color: var(--lp-navy-800);
+    font-weight: var(--lp-fw-medium);
+  }
+  footer .links a:hover { color: var(--lp-sky-500); }
+  footer .legal {
+    margin-top: 32px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--lp-slate-500);
+    max-width: 70ch;
+  }
+  footer .legal p { margin: 0 0 4px; }
+  footer .logo {
+    height: 24px; width: auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Nav ─────────────────────────────────────────────────────── -->
+<header class="page">
+  <nav class="nav" aria-label="primary">
+    <a href="#top" aria-label="Life and Provide home">
+      <img class="logo" src="assets/logo-wordmark.svg" alt="Life &amp; Provide" />
+    </a>
+    <button class="cta" type="button">
+      Contact sales
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<!-- ─── Hero ─────────────────────────────────────────────────────── -->
+<section id="top" class="stipple">
+  <div class="page hero">
+    <h1>
+      We <span class="accent">provide</span> insurance<br/>
+      for when <span class="accent">life</span> happens
+    </h1>
+    <p>
+      We&rsquo;re embedding insurance in the products &amp; services people buy everyday.
+      Our insurance technology is for builders &amp; buyers.
+    </p>
+    <button class="cta" type="button">
+      Contact sales
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </button>
+
+    <div class="hero-anchors">
+      <a href="#builders">
+        For Builders
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+      <a href="#buyers">
+        For Buyers
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── For Builders ─────────────────────────────────────────────── -->
+<section id="builders" class="page section">
+  <div class="grid">
+    <div class="copy">
+      <span class="chip">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 13.5 9 19.5 10.5 13.5 12 12 18 10.5 12 4.5 10.5 10.5 9 Z"/>
+          <path d="M19 16 19.6 18 21.5 18.5 19.6 19 19 21 18.4 19 16.5 18.5 18.4 18 Z"/>
+        </svg>
+        For Builders
+      </span>
+      <h2><span class="accent">Embedding</span> insurance everywhere</h2>
+      <p>
+        We help business builders unlock new revenue by embedding insurance directly
+        into their products &amp; services.
+      </p>
+      <p>
+        Our powerful, API-first platform makes integration fast and flexible — built
+        for makers &amp; innovators, designed for scale.
+      </p>
+      <p>
+        With a simple revenue-share model, you grow your revenues as we provide insurance
+        for when life happens to your customers.
+      </p>
+    </div>
+    <div class="media">
+      <div class="video-card">
+        <div class="video-frame-16x9">
+          <iframe
+            src="https://player.vimeo.com/video/1068056184?h=6246306ec7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="Life &amp; Provide Travel Insurance — working with Masta &amp; Nomad"></iframe>
+        </div>
+        <div class="caption">
+          <span><span class="dot"></span>Case study · Masta &amp; Nomad</span>
+          <span>Travel insurance, embedded</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── For Buyers ───────────────────────────────────────────────── -->
+<section id="buyers" class="page section reverse">
+  <div class="grid">
+    <div class="copy">
+      <span class="chip">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 13.5 9 19.5 10.5 13.5 12 12 18 10.5 12 4.5 10.5 10.5 9 Z"/>
+          <path d="M19 16 19.6 18 21.5 18.5 19.6 19 19 21 18.4 19 16.5 18.5 18.4 18 Z"/>
+        </svg>
+        For Buyers
+      </span>
+      <h2><span class="accent">Insurance</span> made easy</h2>
+      <p>
+        We&rsquo;ve built a smart insurance AI app that puts all your policies in one
+        place — no matter where you bought them.
+      </p>
+      <p>
+        Manage cover, renew plans, and start claims effortlessly, powered by our AI-driven tools.
+      </p>
+      <p>
+        It&rsquo;s your personal insurance operating system — simple, powerful, and always on your side.
+      </p>
+    </div>
+    <div class="media">
+      <div class="buyer-media-wrap">
+        <div class="video-card">
+          <div class="video-frame-1x1">
+            <iframe
+              src="https://player.vimeo.com/video/1048746947?h=7d7b1a10fa&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="L&amp;P Explainer Video"></iframe>
+          </div>
+          <div class="caption">
+            <span><span class="dot"></span>App walkthrough</span>
+            <span>2 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ───────────────────────────────────────────────────── -->
+<footer>
+  <div class="page">
+    <div class="row">
+      <a href="#top" aria-label="Life and Provide home">
+        <img class="logo" src="assets/logo-wordmark.svg" alt="Life &amp; Provide" />
+      </a>
+      <nav class="links" aria-label="footer">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms Of Use</a>
+      </nav>
+    </div>
+    <div class="legal">
+      <p>&copy; 2025 Life &amp; Provide. All rights reserved.</p>
+      <p>Life &amp; Provide Limited t/a Life &amp; Provide is regulated by the Central Bank of Ireland.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<template id="__bundler_thumbnail" data-bg-color="#FAFAF7">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FAFAF7"/>
+    <g font-family="Cormorant Garamond, Times New Roman, Georgia, serif" font-weight="600" font-size="150" text-anchor="middle">
+      <text x="600" y="380" fill="rgb(40,56,73)">Life</text>
+      <text x="600" y="540" fill="rgb(137,198,248)" font-style="italic" font-weight="500">&amp;</text>
+      <text x="600" y="700" fill="rgb(40,56,73)">Provide</text>
+    </g>
+  </svg>
+</template>
+</body>
+</html>

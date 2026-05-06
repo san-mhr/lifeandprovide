@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Life &amp; Provide — Insurance Made Easy</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  /* ─── Hero ────────────────────────────────────────────────── */
+  .hero {
+    padding: 80px 0 72px;
+    text-align: center;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: var(--lp-font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 7vw, 84px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--lp-navy-900);
+    margin: 0 auto 28px;
+    max-width: 16ch;
+  }
+  .hero h1 .accent { color: var(--lp-sky-500); font-weight: 600; }
+  .hero h1 br { display: inline; }
+  .hero p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--lp-slate-500);
+    max-width: 58ch;
+    margin: 0 auto 36px;
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 48px 0 56px; }
+    .hero h1 { margin-bottom: 20px; max-width: 14ch; letter-spacing: -0.02em; }
+    .hero h1 br { display: none; }
+    .hero p { font-size: 16px; margin-bottom: 28px; }
+  }
+
+  /* ─── Section block ───────────────────────────────────────── */
+  .section {
+    padding-block: 96px;
+    border-top: 1px solid rgba(52, 73, 94, 0.08);
+  }
+  .section .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .section.reverse .grid { grid-template-columns: 1.05fr 1fr; }
+  .section.reverse .grid .copy { order: 2; }
+  .section.reverse .grid .media { order: 1; }
+  @media (max-width: 880px) {
+    .section { padding-block: 64px; }
+    .section .grid,
+    .section.reverse .grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .section.reverse .grid .copy { order: 1; }
+    .section.reverse .grid .media { order: 2; }
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid rgba(52, 73, 94, 0.12);
+    border-radius: var(--lp-radius-pill);
+    padding: 8px 14px 8px 12px;
+    font-size: 14px;
+    font-weight: var(--lp-fw-medium);
+    color: var(--lp-navy-800);
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  .chip .spark { color: var(--lp-sky-500); width: 14px; height: 14px; }
+
+  .section h2 {
+    font-family: var(--lp-font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--lp-navy-900);
+    margin: 0 0 28px;
+  }
+  .section h2 .accent { color: var(--lp-sky-500); font-weight: 600; }
+  .section p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--lp-slate-500);
+    max-width: 46ch;
+    margin: 0 0 18px;
+  }
+  .section p:last-of-type { margin-bottom: 0; }
+  @media (max-width: 640px) {
+    .section { padding-block: 48px; }
+    .section h2 { margin-bottom: 18px; }
+    .section p { font-size: 15.5px; margin-bottom: 14px; }
+    .chip { margin-bottom: 18px; padding: 6px 12px 6px 10px; font-size: 13px; }
+  }
+
+  /* ─── Video frames ────────────────────────────────────────── */
+  .video-card {
+    background: white;
+    border-radius: 24px;
+    padding: 14px;
+    box-shadow:
+      0 1px 2px rgba(52, 73, 94, 0.04),
+      0 24px 60px -20px rgba(52, 73, 94, 0.18);
+    border: 1px solid rgba(52, 73, 94, 0.06);
+  }
+  @media (max-width: 640px) {
+    .video-card { border-radius: 18px; padding: 10px; }
+    .video-card .caption { padding: 10px 6px 2px; font-size: 12px; flex-wrap: wrap; gap: 8px; }
+  }
+  .video-frame-16x9, .video-frame-1x1 {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--lp-navy-800);
+  }
+  .video-frame-16x9 { padding-top: 56.25%; }
+  .video-frame-1x1 { padding-top: 100%; }
+  .video-frame-16x9 iframe, .video-frame-1x1 iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-card .caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 8px 4px;
+    font-size: 13px;
+    color: var(--lp-slate-500);
+  }
+  .video-card .caption .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--lp-sky-500);
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .buyer-media-wrap { max-width: 460px; margin: 0 auto; }
+
+  /* ─── Tweakable surface variables ─────────────────────────── */
+  :root {
+    --tw-accent: var(--lp-sky-500);
+    --tw-bg: #FAFAF7;
+    --tw-section-bg: transparent;
+    --tw-card-shadow-strength: 1;
+    --tw-hero-align: center;
+  }
+  body { background: var(--tw-bg); }
+  .hero h1 .accent, .section h2 .accent { color: var(--tw-accent); }
+  .btn-pill { background: var(--tw-accent); }
+  .btn-pill:hover { filter: brightness(.94); }
+  .chip .spark, .video-card .caption .dot { color: var(--tw-accent); }
+  .video-card .caption .dot { background: var(--tw-accent); }
+  .hero { text-align: var(--tw-hero-align); }
+  .hero h1, .hero p { margin-left: var(--tw-hero-mx, auto); margin-right: var(--tw-hero-mx, auto); }
+  body.tw-hide-stipple .stipple { background-image: none; }
+  body.tw-section-tinted .section { background: var(--tw-section-bg); }
+  .video-card {
+    box-shadow:
+      0 1px 2px rgba(52, 73, 94, calc(0.04 * var(--tw-card-shadow-strength))),
+      0 24px 60px -20px rgba(52, 73, 94, calc(0.18 * var(--tw-card-shadow-strength)));
+  }
+  body.tw-accent-italic .hero h1 .accent,
+  body.tw-accent-italic .section h2 .accent { font-style: italic; font-weight: 500; }
+  body.tw-accent-underline .hero h1 .accent,
+  body.tw-accent-underline .section h2 .accent {
+    text-decoration: underline;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.12em;
+    text-decoration-color: color-mix(in oklab, var(--tw-accent) 60%, transparent);
+  }
+  body.tw-accent-plain .hero h1 .accent,
+  body.tw-accent-plain .section h2 .accent { color: inherit; }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <nav class="site-nav" aria-label="primary">
+    <a href="index.html" aria-label="Life and Provide home">
+      <img class="logo" src="assets/logo-wordmark.svg" alt="Life &amp; Provide" />
+    </a>
+    <a class="btn-pill" href="contact-sales.html">
+      Contact sales
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </a>
+  </nav>
+</header>
+
+<section id="top" class="stipple">
+  <div class="page hero">
+    <h1>
+      We <span class="accent">provide</span> insurance<br/>
+      for when <span class="accent">life</span> happens
+    </h1>
+    <p>
+      We&rsquo;re embedding insurance in the products &amp; services people buy everyday.
+      Our insurance technology is for builders &amp; buyers.
+    </p>
+    <a class="btn-pill lg" href="contact-sales.html">
+      Contact sales
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section id="builders" class="page section">
+  <div class="grid">
+    <div class="copy">
+      <span class="chip">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 13.5 9 19.5 10.5 13.5 12 12 18 10.5 12 4.5 10.5 10.5 9 Z"/>
+          <path d="M19 16 19.6 18 21.5 18.5 19.6 19 19 21 18.4 19 16.5 18.5 18.4 18 Z"/>
+        </svg>
+        For Builders
+      </span>
+      <h2><span class="accent">Embedding</span> insurance everywhere</h2>
+      <p>We help business builders unlock new revenue by embedding insurance directly into their products &amp; services.</p>
+      <p>Our powerful, API-first platform makes integration fast and flexible — built for makers &amp; innovators, designed for scale.</p>
+      <p>With a simple revenue-share model, you grow your revenues as we provide insurance for when life happens to your customers.</p>
+    </div>
+    <div class="media">
+      <div class="video-card">
+        <div class="video-frame-16x9">
+          <iframe
+            src="https://player.vimeo.com/video/1068056184?h=6246306ec7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="Life &amp; Provide Travel Insurance — working with Masta &amp; Nomad"></iframe>
+        </div>
+        <div class="caption">
+          <span><span class="dot"></span>Case study · Masta &amp; Nomad</span>
+          <span>Travel insurance, embedded</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="buyers" class="page section reverse">
+  <div class="grid">
+    <div class="copy">
+      <span class="chip">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 13.5 9 19.5 10.5 13.5 12 12 18 10.5 12 4.5 10.5 10.5 9 Z"/>
+          <path d="M19 16 19.6 18 21.5 18.5 19.6 19 19 21 18.4 19 16.5 18.5 18.4 18 Z"/>
+        </svg>
+        For Buyers
+      </span>
+      <h2><span class="accent">Insurance</span> made easy</h2>
+      <p>We&rsquo;ve built a smart insurance AI app that puts all your policies in one place — no matter where you bought them.</p>
+      <p>Manage cover, renew plans, and start claims effortlessly, powered by our AI-driven tools.</p>
+      <p>It&rsquo;s your personal insurance operating system — simple, powerful, and always on your side.</p>
+    </div>
+    <div class="media">
+      <div class="buyer-media-wrap">
+        <div class="video-card">
+          <div class="video-frame-1x1">
+            <iframe
+              src="https://player.vimeo.com/video/1048746947?h=7d7b1a10fa&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="L&amp;P Explainer Video"></iframe>
+          </div>
+          <div class="caption">
+            <span><span class="dot"></span>App walkthrough</span>
+            <span>2 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="page">
+    <div class="row">
+      <a href="index.html" aria-label="Life and Provide home">
+        <img class="logo" src="assets/logo-wordmark.svg" alt="Life &amp; Provide" />
+      </a>
+      <nav class="links" aria-label="footer">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms Of Use</a>
+        <a href="contact-sales.html">Contact sales</a>
+      </nav>
+    </div>
+    <div class="legal">
+      <p>&copy; 2025 Life &amp; Provide. All rights reserved.</p>
+      <p>Life &amp; Provide Limited t/a Life &amp; Provide is regulated by the Central Bank of Ireland.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<!-- ─── Tweaks panel ─────────────────────────────────────────── -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#89C6F8",
+    "accentStyle": "bold",
+    "background": "#FAFAF7",
+    "showStipple": true,
+    "tintSections": false,
+    "sectionBg": "#F2F7FC",
+    "heroAlign": "center",
+    "cardShadow": 1
+  }/*EDITMODE-END*/;
+
+  function TweaksApp() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    React.useEffect(() => {
+      const r = document.documentElement.style;
+      r.setProperty('--tw-accent', t.accent);
+      r.setProperty('--tw-bg', t.background);
+      r.setProperty('--tw-section-bg', t.sectionBg);
+      r.setProperty('--tw-card-shadow-strength', String(t.cardShadow));
+      r.setProperty('--tw-hero-align', t.heroAlign);
+      r.setProperty('--tw-hero-mx', t.heroAlign === 'left' ? '0' : 'auto');
+
+      const b = document.body;
+      b.classList.toggle('tw-hide-stipple', !t.showStipple);
+      b.classList.toggle('tw-section-tinted', !!t.tintSections);
+      b.classList.remove('tw-accent-italic', 'tw-accent-underline', 'tw-accent-plain');
+      if (t.accentStyle === 'italic') b.classList.add('tw-accent-italic');
+      if (t.accentStyle === 'underline') b.classList.add('tw-accent-underline');
+      if (t.accentStyle === 'plain') b.classList.add('tw-accent-plain');
+    }, [t]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Brand" />
+        <TweakColor label="Accent" value={t.accent}
+          options={['#89C6F8', '#34495E', '#1F8A5B', '#7A5AE0', '#D97757']}
+          onChange={(v) => setTweak('accent', v)} />
+        <TweakSelect label="Accent style" value={t.accentStyle}
+          options={['bold', 'italic', 'underline', 'plain']}
+          onChange={(v) => setTweak('accentStyle', v)} />
+
+        <TweakSection label="Hero" />
+        <TweakRadio label="Alignment" value={t.heroAlign}
+          options={['center', 'left']}
+          onChange={(v) => setTweak('heroAlign', v)} />
+        <TweakToggle label="Stipple texture" value={t.showStipple}
+          onChange={(v) => setTweak('showStipple', v)} />
+
+        <TweakSection label="Surface" />
+        <TweakColor label="Page background" value={t.background}
+          options={['#FAFAF7', '#FFFFFF', '#F2F7FC', '#EEF2F6']}
+          onChange={(v) => setTweak('background', v)} />
+        <TweakToggle label="Tint sections" value={t.tintSections}
+          onChange={(v) => setTweak('tintSections', v)} />
+        <TweakColor label="Section tint" value={t.sectionBg}
+          options={['#F2F7FC', '#F5F5F5', '#FFFFFF', '#EEF2F6']}
+          onChange={(v) => setTweak('sectionBg', v)} />
+        <TweakSlider label="Card shadow" value={t.cardShadow}
+          min={0} max={2} step={0.1}
+          onChange={(v) => setTweak('cardShadow', v)} />
+      </TweaksPanel>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweaksApp />);
+</script>
+</body>
+</html>

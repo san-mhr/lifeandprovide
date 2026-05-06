@@ -1,0 +1,198 @@
+/* Life and Provide — Colors & Type
+   Source of truth: Figma "Life and Provide Login Flow v3" + marketing site screenshot.
+   The brand pairs a deep slate-navy with a friendly sky-blue accent and a serif logotype. */
+
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* ──────────────────────────────────────────────────────────────
+     Brand palette
+     ────────────────────────────────────────────────────────────── */
+
+  /* Slate-navy — the brand's hero color. App headers, splash, dark CTAs. */
+  --lp-navy-900: rgb(40, 56, 73);     /* deepest, used in marketing nav text */
+  --lp-navy-800: rgb(52, 73, 94);     /* PRIMARY brand navy — splash, app header, CTA */
+  --lp-navy-700: rgb(63, 73, 96);     /* wordmark logo fill */
+  --lp-navy-600: rgb(67, 88, 109);    /* surface lift inside navy bg, dark button fill */
+  --lp-navy-500: rgb(78, 98, 118);    /* muted navy — minor accents */
+
+  /* Sky — the friendly accent. Highlights, links, primary CTA in verify state. */
+  --lp-sky-500: rgb(137, 198, 248);   /* PRIMARY accent — "&", "provide", "life" emphasis */
+  --lp-sky-300: rgb(214, 236, 255);   /* tint — background fills, light hovers */
+  --lp-sky-100: rgba(137, 198, 248, 0.10); /* hairline border on dark inputs */
+
+  /* Neutrals — slate-cool grayscale */
+  --lp-ink-900: rgb(23, 23, 24);      /* near-black, rare */
+  --lp-ink-700: rgb(60, 60, 67);      /* iOS system dark text */
+  --lp-slate-500: rgb(98, 113, 134);  /* muted slate */
+  --lp-slate-400: rgb(118, 118, 128); /* iOS placeholder gray */
+  --lp-slate-300: rgb(156, 168, 179); /* PRIMARY text-muted — placeholders, labels, body on dark */
+  --lp-slate-200: rgb(194, 195, 195); /* very light label */
+  --lp-stone-200: rgb(196, 196, 196); /* icon chip bg in settings */
+  --lp-stone-100: rgb(209, 217, 224); /* hairline divider */
+  --lp-fog-200: rgb(206, 210, 217);   /* subtle UI fog */
+  --lp-fog-100: rgb(233, 238, 242);   /* card whisper */
+  --lp-paper-200: rgb(240, 240, 240); /* PRIMARY surface — chat bubble, input rest */
+  --lp-paper-100: rgb(245, 245, 245); /* card surface — dashboard policy cards */
+  --lp-white: rgb(255, 255, 255);
+  --lp-black: rgb(0, 0, 0);
+
+  /* Semantic — derived */
+  --lp-bg-app: var(--lp-white);
+  --lp-bg-app-dark: var(--lp-navy-800);
+  --lp-bg-card: var(--lp-paper-100);
+  --lp-bg-bubble-user: var(--lp-paper-200);
+  --lp-bg-input-dark: var(--lp-navy-600);
+  --lp-bg-input-light: var(--lp-paper-200);
+
+  --lp-fg-on-light: var(--lp-navy-800);
+  --lp-fg-on-dark: var(--lp-white);
+  --lp-fg-muted: var(--lp-slate-300);
+  --lp-fg-link: var(--lp-sky-500);
+
+  --lp-border-on-dark: var(--lp-sky-100);
+  --lp-border-hairline: rgba(67, 88, 109, 0.10);
+
+  /* Shadows — used sparingly in app, slightly more in marketing */
+  --lp-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --lp-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --lp-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --lp-shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.12);
+
+  /* Radii — observed: 10 (cards/inputs), 20 (buttons + composer), 9999 (chips) */
+  --lp-radius-sm: 6px;
+  --lp-radius-md: 10px;
+  --lp-radius-lg: 20px;
+  --lp-radius-pill: 9999px;
+
+  /* Spacing — 4px base. App uses 8/12/16/20/24/32. */
+  --lp-space-1: 4px;
+  --lp-space-2: 8px;
+  --lp-space-3: 12px;
+  --lp-space-4: 16px;
+  --lp-space-5: 20px;
+  --lp-space-6: 24px;
+  --lp-space-7: 32px;
+  --lp-space-8: 48px;
+
+  /* ──────────────────────────────────────────────────────────────
+     Type
+     ────────────────────────────────────────────────────────────── */
+
+  /* The product UI is set in SF Pro (system). Marketing uses a serif (Cormorant
+     Garamond is the closest GFonts match to the wordmark — flag for review).
+     Inter is substituted for SF Pro on web/non-Apple. */
+  --lp-font-display: "Schibsted Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --lp-font-ui: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text",
+    "Helvetica Neue", Arial, sans-serif;
+  --lp-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Weights observed: 400 (regular), 500 (medium — most UI), 600 (semibold), 700 (bold). */
+  --lp-fw-regular: 400;
+  --lp-fw-medium: 500;
+  --lp-fw-semibold: 600;
+  --lp-fw-bold: 700;
+
+  /* Sizes observed in Figma: 8, 13, 14, 16, 18, 20, 22, 24, 48, 52 */
+  --lp-fs-xs: 13px;
+  --lp-fs-sm: 14px;
+  --lp-fs-base: 16px;
+  --lp-fs-md: 18px;     /* the workhorse — body, button, input */
+  --lp-fs-lg: 22px;
+  --lp-fs-xl: 24px;
+  --lp-fs-2xl: 32px;
+  --lp-fs-3xl: 48px;    /* splash tagline */
+  --lp-fs-4xl: 52px;    /* dashboard headline number */
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Semantic type styles
+   ────────────────────────────────────────────────────────────── */
+
+.lp-display-1 {
+  font-family: var(--lp-font-display);
+  font-weight: var(--lp-fw-bold);
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--lp-fg-on-light);
+}
+.lp-display-2 {
+  font-family: var(--lp-font-display);
+  font-weight: var(--lp-fw-bold);
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--lp-fg-on-light);
+}
+.lp-h1 {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-bold);
+  font-size: var(--lp-fs-xl);
+  line-height: 1.15;
+  color: var(--lp-fg-on-light);
+}
+.lp-h2 {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-medium);
+  font-size: var(--lp-fs-lg);
+  line-height: 1.2;
+  color: var(--lp-fg-on-light);
+}
+.lp-h3 {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-semibold);
+  font-size: var(--lp-fs-md);
+  line-height: 1.3;
+  color: var(--lp-fg-on-light);
+}
+.lp-body {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-regular);
+  font-size: var(--lp-fs-md);
+  line-height: 1.5;
+  color: var(--lp-fg-on-light);
+}
+.lp-body-sm {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-regular);
+  font-size: var(--lp-fs-sm);
+  line-height: 1.5;
+  color: var(--lp-fg-on-light);
+}
+.lp-label {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-bold);
+  font-size: var(--lp-fs-md);
+  line-height: 1.2;
+  color: var(--lp-fg-muted);
+}
+.lp-button-text {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-medium);
+  font-size: var(--lp-fs-md);
+  line-height: 1;
+}
+.lp-caption {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-regular);
+  font-size: var(--lp-fs-xs);
+  line-height: 1.4;
+  color: var(--lp-fg-muted);
+}
+.lp-tagline {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-regular);
+  font-size: var(--lp-fs-3xl);
+  line-height: 1;
+  color: var(--lp-white);
+  text-align: center;
+}
+.lp-stat {
+  font-family: var(--lp-font-ui);
+  font-weight: var(--lp-fw-regular);
+  font-size: var(--lp-fs-4xl);
+  line-height: 1;
+  color: var(--lp-white);
+}
